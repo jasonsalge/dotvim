@@ -35,7 +35,10 @@ set shiftwidth=4                     " number of spaces to use for autoindenting
 set smarttab                         " insert tabs on the start of a line
                                      " according to shiftwidth, not tabstop
 set tabstop=4                        " a tab is four spaces
+set softtabstop=4                    " a tab is four spaces
 set wrap                             " wrap overlong lines
+
+set nohls
 
 "-------------------------------------------------------------------------------
 " UI settings
@@ -62,6 +65,12 @@ endif
 set background=dark
 let g:base16_termtrans=1
 colorscheme base16
+"if has("gui_running")
+"    colorscheme koehler
+"else
+"    colorscheme jason-koehler
+"endif
+
 
 call toggletheme#maptransparency("<F10>")
 call toggletheme#mapbg("<F11>")
@@ -94,6 +103,17 @@ set incsearch                        " show search matches as you type
 set listchars=tab:?\ ,trail:·        " set custom characters for non-printable
                                      " characters
 set list                             " always show non-printable characters
+"" -- from my old vimrc
+"set nolist                             " always show non-printable characters
+"" List chars
+"set listchars=""                  " Reset the listchars
+""set listchars=tab:\ \             " a tab should display as "  ", trailing whitespace as "."
+"set listchars+=trail:.            " show trailing spaces as dots
+"set listchars+=extends:>          " The character to show in the last column when wrap is
+"                                  " off and the line continues beyond the right of the screen
+"set listchars+=precedes:<         " The character to show in the last column when wrap is
+"" end -- from my old vimrc
+
 set matchtime=3                      " set brace match time
 set scrolloff=3                      " maintain more context around the cursor
 set linebreak                        " wrap lines at logical word boundaries
@@ -127,8 +147,11 @@ set hidden                           " be able to put the current buffer to the
 set history=50                       " keep 50 lines of command line history
 set nostartofline                    " do not change the X position of the
                                      " cursor when paging up and down
-"set mouse=a
+set mouse=a
+set wildmenu
+set wildmode=list:longest
 set wildignore+=*.o,*.obj,*.dwo
+
 
 set ttimeoutlen=0                    " don't wait for key codes (<ESC> is instant)
 
@@ -286,6 +309,8 @@ let g:gitgutter_sign_column_always = 1
 " Configure gitv
 let g:Gitv_TruncateCommitSubjects = 1
 
+set tags=./tags,./TAGS,tags,TAGS,../tags,../../tags
+
 "-------------------------------------------------------------------------------
 " File type specific settings
 "-------------------------------------------------------------------------------
@@ -391,3 +416,20 @@ endif
 
 " Close vim if the last window is NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+"
+" CTRL-X and SHIFT-Del are Cut
+vnoremap <C-X> "+x
+vnoremap <S-Del> "+x
+
+" CTRL-C and CTRL-Insert are Copy
+vnoremap <C-C> "+y
+vnoremap <C-Insert> "+y
+
+" CTRL-V and SHIFT-Insert are Paste
+map <C-V>		"+gP
+map <S-Insert>		"+gP
+
+cmap <C-V>		<C-R>+
+cmap <S-Insert>		<C-R>+
+
