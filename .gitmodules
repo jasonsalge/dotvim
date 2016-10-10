@@ -2,53 +2,53 @@
 	path = home/.vim/submodules/pathogen
 	url = https://github.com/tpope/vim-pathogen.git
 [submodule "home/.vim/submodules/molokai"]
-	path = home/.vim/bundles/molokai
+	path = home/.vim/bundle/molokai
 	url = https://github.com/tomasr/molokai.git
 [submodule "home/.vim/submodules/ListToggle"]
-	path = home/.vim/bundles/ListToggle
+	path = home/.vim/bundle/ListToggle
 	url = https://github.com/Valloric/ListToggle.git
 [submodule "home/.vim/submodules/a"]
-	path = home/.vim/bundles/a
+	path = home/.vim/bundle/a
 	url = https://github.com/vim-scripts/a.vim.git
 [submodule "home/.vim/submodules/command-t"]
-	path = home/.vim/bundles/command-t
+	path = home/.vim/bundle/command-t
 	url = https://github.com/wincent/command-t.git
 [submodule "home/.vim/submodules/gitv"]
-	path = home/.vim/bundles/gitv
+	path = home/.vim/bundle/gitv
 	url = https://github.com/gregsexton/gitv.git
 [submodule "home/.vim/submodules/html5"]
-	path = home/.vim/bundles/html5
+	path = home/.vim/bundle/html5
 	url = https://github.com/othree/html5.vim.git
 [submodule "home/.vim/submodules/nerdcommenter"]
-	path = home/.vim/bundles/nerdcommenter
+	path = home/.vim/bundle/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter.git
 [submodule "home/.vim/submodules/nerdtree"]
-	path = home/.vim/bundles/nerdtree
+	path = home/.vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
 [submodule "home/.vim/submodules/nerdtree-git-plugin"]
-	path = home/.vim/bundles/nerdtree-git-plugin
+	path = home/.vim/bundle/nerdtree-git-plugin
 	url = https://github.com/Xuyuanp/nerdtree-git-plugin.git
 [submodule "home/.vim/submodules/powerline"]
-	path = home/.vim/bundles/powerline
+	path = home/.vim/bundle/powerline
 	url = https://github.com/powerline/powerline.git
 [submodule "home/.vim/submodules/tagbar"]
-	path = home/.vim/bundles/tagbar
+	path = home/.vim/bundle/tagbar
 	url = https://github.com/majutsushi/tagbar.git
 [submodule "home/.vim/submodules/vim-colors-solarized"]
-	path = home/.vim/bundles/vim-colors-solarized
+	path = home/.vim/bundle/vim-colors-solarized
 	url = https://github.com/altercation/vim-colors-solarized.git
 [submodule "home/.vim/submodules/vim-dispatch"]
-	path = home/.vim/bundles/vim-dispatch
+	path = home/.vim/bundle/vim-dispatch
 	url = https://github.com/tpope/vim-dispatch.git
 [submodule "home/.vim/submodules/vim-figitive"]
-	path = home/.vim/bundles/vim-figitive
+	path = home/.vim/bundle/vim-figitive
 	url = https://github.com/tpope/vim-fugitive.git
 [submodule "home/.vim/submodules/vim-gitgutter"]
-	path = home/.vim/bundles/vim-gitgutter
+	path = home/.vim/bundle/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
 [submodule "home/.vim/submodules/vim-polyglot"]
-	path = home/.vim/bundles/vim-polyglot
+	path = home/.vim/bundle/vim-polyglot
 	url = https://github.com/sheerun/vim-polyglot.git
 [submodule "home/.vim/submodules/vim-rtags"]
-	path = home/.vim/bundles/vim-rtags
+	path = home/.vim/bundle/vim-rtags
 	url = https://github.com/lyuts/vim-rtags.git
