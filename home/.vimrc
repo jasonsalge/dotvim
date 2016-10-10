@@ -64,17 +64,17 @@ endif
 
 set background=dark
 let g:base16_termtrans=1
-colorscheme base16
-"if has("gui_running")
-"    colorscheme koehler
-"else
-"    colorscheme jason-koehler
-"endif
+"colorscheme base16
+if has("gui_running")
+    colorscheme koehler
+else
+    colorscheme jason-koehler
+endif
 
 
-call toggletheme#maptransparency("<F10>")
-call toggletheme#mapbg("<F11>")
-call toggletheme#map256("<F12>")
+"call toggletheme#maptransparency("<F10>")
+"call toggletheme#mapbg("<F11>")
+"call toggletheme#map256("<F12>")
 
 highlight link YcmErrorSection ErrorMsg
 
@@ -134,7 +134,7 @@ set showtabline=2
 
 set autoread                         " automatically reload a file when it has
                                      " been changed
-set backup                           " enable backups
+"set backup                           " enable backups
 set backupdir=$HOME/.vim/backup      " set the backup directory
 set undofile                         " enable persistent undo
 set undodir=$HOME/.vim/undo          " persistent undo directory
