@@ -49,15 +49,15 @@ set t_ZH=[3m                         " set escape codes for italics mode
 set t_ZR=[23m                        " set escape codes for italics mode
 
 " Molokai settings
-"set t_Co=256                         " force 256 colors by default
+set t_Co=256                         " force 256 colors by default
 let g:molokai_original=0
 let g:rehash256=1
 "colorscheme molokai                  " set colorscheme for 256 color terminals
 
 " Base16 settings
-if &t_Co != 8
-    set t_Co=16
-endif
+"if &t_Co != 8
+"    set t_Co=16
+"endif
 "let g:solarized_termtrans=1
 "let g:solarized_bold=0
 "colorscheme solarized
@@ -65,11 +65,14 @@ endif
 set background=dark
 let g:base16_termtrans=1
 "colorscheme base16
-if has("gui_running")
-    colorscheme koehler
-else
-    colorscheme jason-koehler
-endif
+"if has("gui_running")
+"    colorscheme koehler
+"else
+"    colorscheme jason-koehler
+"    "colorscheme koehler
+"endif
+
+colorscheme redbeard
 
 
 "call toggletheme#maptransparency("<F10>")
@@ -432,4 +435,7 @@ map <S-Insert>		"+gP
 
 cmap <C-V>		<C-R>+
 cmap <S-Insert>		<C-R>+
+
+" Finally make certain the colorscheme I want is installed
+colorscheme redbeard
 
