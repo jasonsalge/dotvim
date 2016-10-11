@@ -103,9 +103,9 @@ au VimResized * exe "normal! \<c-w>="
 "-------------------------------------------------------------------------------
 
 set incsearch                        " show search matches as you type
-set listchars=tab:?\ ,trail:·        " set custom characters for non-printable
+"set listchars=tab:?\ ,trail:·        " set custom characters for non-printable
                                      " characters
-set list                             " always show non-printable characters
+set nolist                           " always show non-printable characters
 "" -- from my old vimrc
 "set nolist                             " always show non-printable characters
 "" List chars
