@@ -44,13 +44,13 @@ set nohls
 " UI settings
 "-------------------------------------------------------------------------------
 
-set t_so=[7m                         " set escape codes for standout mode
-set t_ZH=[3m                         " set escape codes for italics mode
-set t_ZR=[23m                        " set escape codes for italics mode
+"set t_so=[7m                         " set escape codes for standout mode
+"set t_ZH=[3m                         " set escape codes for italics mode
+"set t_ZR=[23m                        " set escape codes for italics mode
 
 " Molokai settings
 set t_Co=256                         " force 256 colors by default
-let g:molokai_original=0
+"let g:molokai_original=0
 let g:rehash256=1
 "colorscheme molokai                  " set colorscheme for 256 color terminals
 
@@ -156,7 +156,7 @@ set wildmode=list:longest
 set wildignore+=*.o,*.obj,*.dwo
 
 
-set ttimeoutlen=0                    " don't wait for key codes (<ESC> is instant)
+"set ttimeoutlen=0                    " don't wait for key codes (<ESC> is instant)
 
 "-------------------------------------------------------------------------------
 " Key remappings
