@@ -148,5 +148,11 @@ endfunction
 set <m-d>=d
 map <M-d> <ESC>:call CHANGE_CURR_DIR()<CR>
 
+function! Iclang()
+    echom 'Compiling with clang...'
+    set makeprg=./bb configure --variant=debug -o build.clang -l 10 -j64
+    make
+endfunction
+
 let g:loaded_redbeard_tools = 1
 

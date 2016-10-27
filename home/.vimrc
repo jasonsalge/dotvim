@@ -120,14 +120,15 @@ set nolist                           " always show non-printable characters
 set matchtime=3                      " set brace match time
 set scrolloff=3                      " maintain more context around the cursor
 set linebreak                        " wrap lines at logical word boundaries
-set showbreak=?                      " character to display in front of wrapper
-                                     " lines
+"set showbreak=?                      " character to display in front of wrapper
+"                                     " lines
 set showmatch                        " enable brace highlighting
 set ignorecase                       " ignore case
 set smartcase                        " ignore case if search pattern is all
                                      " lowercase, case-sensitive otherwise
-set visualbell                       " only show a visual cue when an error
+set novisualbell                     " only show a visual cue when an error
                                      " occurs
+set t_vb=                            " Show nothing on the visual bell
 set laststatus=2                     " always show the status line
 set showtabline=2
 
@@ -162,8 +163,6 @@ set wildignore+=*.o,*.obj,*.dwo
 " Key remappings
 "-------------------------------------------------------------------------------
 
-let mapleader=" "                    " set our personal modifier key to space
-
 set pastetoggle=<F3>                 " F3 temporarily disables formatting when
                                      " pasting text
 
@@ -186,13 +185,13 @@ nnoremap <silent> <C-l> :bnext<CR>
 
 nnoremap <leader>v V`]
 
-nnoremap / /\v
-vnoremap / /\v
+"nnoremap / /\v
+"vnoremap / /\v
 
 " Switch Ctri-i and Ctrl-o, jumping backwards using Ctrl-i and forwards using
 " Ctrl-o seems more logical given the keyboard layout.
-nnoremap <C-i> <C-o>
-nnoremap <C-o> <C-i>
+"nnoremap <C-i> <C-o>
+"nnoremap <C-o> <C-i>
 
 " Toggle for side bar
 fu! UiToggle(command)
@@ -210,6 +209,8 @@ nnoremap <silent> <F2> :call UiToggle(":NERDTreeToggle")<CR>
 
 " Flush command-t buffer
 nmap <silent> <leader>r :CommandTFlush<CR>
+" command-t searches from the current directory instead of the SCM root
+let g:CommandTTraverseSCM='pwd'
 
 " YouCompleteMe mappings
 nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
