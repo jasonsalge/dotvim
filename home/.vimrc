@@ -180,8 +180,8 @@ vnoremap > >gv
 vmap <tab> >gv
 vmap <s-tab> <gv
 
-nnoremap <silent> <C-h> :bprevious<CR>
-nnoremap <silent> <C-l> :bnext<CR>
+"nnoremap <silent> <C-h> :bprevious<CR>
+"nnoremap <silent> <C-l> :bnext<CR>
 
 nnoremap <leader>v V`]
 
@@ -230,10 +230,8 @@ nnoremap Q <nop>
 " Remap <leader>m to execute a make.
 nmap <silent> <leader>m :make<CR>
 
-" Remap Ctrl-k and Ctrl-j to jump to the previous and next compiler error
-" respectively.
-nmap <silent> <C-k> :cp<CR>
-nmap <silent> <C-j> :cn<CR>
+nmap <silent> <C-j> :bprevious<CR>
+nmap <silent> <C-k> :bnext<CR>
 
 " Switch between header and implementation using F4.
 map <F4> :A<CR>
