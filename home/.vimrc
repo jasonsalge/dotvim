@@ -215,6 +215,12 @@ let g:CommandTTraverseSCM='pwd'
 " YouCompleteMe mappings
 nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
 nnoremap <leader>jd :YcmCompleter GoTo<CR>
+nnoremap <leader>yd :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>yf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>yi :YcmCompleter GoToInclude<CR>
+nnoremap <leader>yr :YcmCompleter GoToReferences<CR>
+nnoremap <leader>ys :YcmCompleter GoToImplementations<CR>
+nnoremap <leader>yt :YcmCompleter GetType<CR>
 
 " Close the current buffer
 map <leader>bd :Bclose<CR>
@@ -438,3 +444,4 @@ cmap <S-Insert>		<C-R>+
 " Finally make certain the colorscheme I want is installed
 colorscheme redbeard
 
+set path+=../**
