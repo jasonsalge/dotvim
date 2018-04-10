@@ -1,27 +1,88 @@
-"-------------------------------------------------------------------------------
-" Initialize pathogen
-"-------------------------------------------------------------------------------
-" Load pathogen.
-runtime submodules/pathogen/autoload/pathogen.vim
-filetype off
+""-------------------------------------------------------------------------------
+"" Initialize pathogen
+""-------------------------------------------------------------------------------
+"" Load pathogen.
+"runtime submodules/pathogen/autoload/pathogen.vim
+"filetype off
+"
+"let g:pathogen_disabled = ['tagbar', 'vim-colors-solarized']
+"if has("win16") || has("win32") || has("win64")
+"    call add(g:pathogen_disabled, 'YouCompleteMe')
+"endif
+"
+"execute pathogen#infect()
+"execute pathogen#helptags()
+"
+"" Enable plugin support based on filetypes.
+"filetype on
+"filetype plugin on
+"filetype indent on
+"
+"if $SHELL =~ 'fish'
+"    set shell=/bin/sh
+"endif
 
-let g:pathogen_disabled = ['tagbar', 'vim-colors-solarized']
-if has("win16") || has("win32") || has("win64")
-    call add(g:pathogen_disabled, 'YouCompleteMe')
+"-------------------------------------------------------------------------------
+" vim-plug
+"-------------------------------------------------------------------------------
+let s:plugin_dir = '~/.vim/plugged'
+let s:plug_file = '~/.vim/autoload/plug.vim'
+
+if empty(glob(s:plug_file))
+    silent execute '!curl -fLo ' . s:plug_file . ' --create-dirs -k ' .
+        \ 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-execute pathogen#infect()
-execute pathogen#helptags()
+call plug#begin(s:plugin_dir)
 
-" Enable plugin support based on filetypes.
-filetype on
-filetype plugin on
-filetype indent on
+Plug 'airblade/vim-gitgutter'
+Plug 'tomasr/molokai'
+Plug 'joshdick/onedark.vim'
+"Plug 'junegunn/fzf', { 'do': './install --bin' }
+"Plug 'junegunn/fzf.vim'
+Plug 'wincent/command-t' " Need to compile after installing this
+Plug 'justinmk/vim-dirvish'
+Plug 'lyuts/vim-rtags'
+Plug 'scrooloose/nerdcommenter'
+Plug 'sheerun/vim-polyglot'
+Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'tpope/vim-dispatch' | Plug 'radenling/vim-dispatch-neovim'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-fugitive'
+Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
+Plug 'bfrg/vim-cpp-modern'
+Plug 'jremmen/vim-ripgrep'
 
-if $SHELL =~ 'fish'
-    set shell=/bin/sh
-endif
+" Manually managed
+Plug '~/.vim/bundle/YouCompleteMe', { 'for': [] }
+augroup load_ycm
+    autocmd!
+    autocmd CursorHold,CursorHoldI * exe "normal! m\""
+                                 \ | call plug#load('YouCompleteMe')
+                                 \ | set updatetime=250
+                                 \ | autocmd! load_ycm
+augroup END
 
+Plug '~/.vim/bundle/redbeard-tools'
+
+call plug#end()
+
+
+" --column: Show column number
+" --line-number: Show line number
+" --no-heading: Do not show file headings in results
+" --fixed-strings: Search term as a literal string
+" --ignore-case: Case insensitive search
+" --no-ignore: Do not respect .gitignore, etc...
+" --hidden: Search hidden files and folders
+" --follow: Follow symlinks
+" --glob: Additional conditions for search (in this case ignore everything
+"  in the .git/ folder)
+" --color: Search color options
+"command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+
+"
 "-------------------------------------------------------------------------------
 " Text formatting
 "-------------------------------------------------------------------------------
@@ -52,7 +113,7 @@ set nohls
 set t_Co=256                         " force 256 colors by default
 "let g:molokai_original=0
 let g:rehash256=1
-"colorscheme molokai                  " set colorscheme for 256 color terminals
+colorscheme redbeard-molokai                  " set colorscheme for 256 color terminals
 
 " Base16 settings
 "if &t_Co != 8
@@ -72,7 +133,48 @@ let g:base16_termtrans=1
 "    "colorscheme koehler
 "endif
 
-colorscheme redbeard
+" Airline theme settings
+set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the
+" status line)
+"
+"let g:airline_theme='solarized'
+"let g:airline_powerline_fonts=1
+let g:solarized_base16=1
+let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#buffer_nr_show=1
+let g:airline#extensions#tabline#buffer_nr_format='%s '
+"let g:airline_symbols#maxlinenr = ''
+"let g:airline_symbols.maxlinenr=' |'
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_symbols.maxlinenr = " |"
+"let g:airline_section_z = airline#section#create(['%3p%%', g:airline_symbols.maxlinenr, 'linenr', ':%c'])
+"let g:airline_section_z = "%{strlen(getline('.'))}"
+"let g:airline_section_z = '%3p%% %{g:airline_symbols.linenr} %#__accent_bold#%3l%#__restore__#:%3v %{VisualLength()}'
+
+"function! VisualLength()
+	"return virtcol("'>") - virtcol("'<")
+"endfunction
+
+"function! AirlineInit()
+    "call airline#parts#define_raw('linenr', '%l')
+    "call airline#parts#define_accent('linenr', 'bold')
+    "let g:airline_section_z = airline#section#create(['%3p%%', g:airline_symbols.linenr, 'linenr', ":%c %{strlen(getline('.'))}" ])
+"endfunction
+"autocmd VimEnter * call AirlineInit()
+
+" Modern CPP extensions
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
+let g:cpp_experimental_simple_template_highlight = 1
+let g:cpp_experimental_template_highlight = 1
+let g:cpp_no_function_highlight = 1
+let c_no_curly_error=1
+
+
+"colorscheme redbeard
 
 
 "call toggletheme#maptransparency("<F10>")
@@ -117,12 +219,13 @@ set nolist                           " always show non-printable characters
 "set listchars+=precedes:<         " The character to show in the last column when wrap is
 "" end -- from my old vimrc
 
-set matchtime=3                      " set brace match time
+"set matchtime=3                      " set brace match time
 set scrolloff=3                      " maintain more context around the cursor
 set linebreak                        " wrap lines at logical word boundaries
 "set showbreak=?                      " character to display in front of wrapper
 "                                     " lines
-set showmatch                        " enable brace highlighting
+"set showmatch                        " enable brace highlighting
+set noshowmatch                        " enable brace highlighting
 set ignorecase                       " ignore case
 set smartcase                        " ignore case if search pattern is all
                                      " lowercase, case-sensitive otherwise
@@ -248,10 +351,22 @@ inoremap jk <ESC>
 " Movement
 nnoremap j gj
 nnoremap k gk
+" Configure fzf mappings
+"map <leader>s :Ag<space>
+"map <C-p> :Files<CR>
+"map <leader>l :Buffer<CR>
+"map <leader>t :GFiles<CR>
+"map <leader>h :Commands<CR>
+"map <leader>? :Helptags<CR>
+"map <leader>gs :GFiles?<CR>
+"map <leader>gl :Commits<CR>
+"map <leader>gbl :BCommits<CR>
+"imap <C-x><C-l> <plug>(fzf-complete-line)
+
 
 " Miscellaneous
 map <leader>w <C-w>
-map <leader>s :Ag<space>
+map <leader>s :Rg<space>
 
 " Search and grep
 "-------------------------------------------------------------------------------
@@ -442,6 +557,7 @@ cmap <C-V>		<C-R>+
 cmap <S-Insert>		<C-R>+
 
 " Finally make certain the colorscheme I want is installed
-colorscheme redbeard
+"colorscheme redbeard
+"colorscheme redbeard-molokai                  " set colorscheme for 256 color terminals
 
 set path+=../**
