@@ -255,6 +255,11 @@ set history=50                       " keep 50 lines of command line history
 set nostartofline                    " do not change the X position of the
                                      " cursor when paging up and down
 set mouse=a
+if $TERM == "screen-256color"
+    set ttymouse=xterm
+    set mouse=a
+endif
+
 set wildmenu
 set wildmode=list:longest
 set wildignore+=*.o,*.obj,*.dwo

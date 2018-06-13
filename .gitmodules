@@ -28,9 +28,6 @@
 [submodule "home/.vim/submodules/nerdtree-git-plugin"]
 	path = home/.vim/bundle/nerdtree-git-plugin
 	url = https://github.com/Xuyuanp/nerdtree-git-plugin.git
-[submodule "home/.vim/submodules/powerline"]
-	path = home/.vim/bundle/powerline
-	url = https://github.com/powerline/powerline.git
 [submodule "home/.vim/submodules/tagbar"]
 	path = home/.vim/bundle/tagbar
 	url = https://github.com/majutsushi/tagbar.git
@@ -58,6 +55,9 @@
 [submodule "home/.vim/bundle/vim-airline"]
 	path = home/.vim/bundle/vim-airline
 	url = https://github.com/vim-airline/vim-airline.git
+#[submodule "home/.vim/bundle/vim-airline-themes"]
+#	path = home/.vim/bundle/vim-airline-themes
+#	url = https://github.com/vim-airline/vim-airline-themes.git
 [submodule "home/.vim/bundle/vim-airline-themes"]
 	path = home/.vim/bundle/vim-airline-themes
 	url = https://github.com/vim-airline/vim-airline-themes.git
