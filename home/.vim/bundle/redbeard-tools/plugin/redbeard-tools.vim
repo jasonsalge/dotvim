@@ -47,9 +47,9 @@ function! Edit_companion_cycle(direction)
     endif
 endfunction
 
-set <m-6>=6
+"set <m-6>=6
 map <M-6> <ESC>:call Edit_companion_cycle("f")<CR>
-set <m-5>=5
+"set <m-5>=5
 map <M-5> <ESC>:call Edit_companion_cycle("r")<CR>
 "
 " Map companion editing (has to be done here since this is only sourced once)
@@ -107,7 +107,7 @@ function! Create_inline()
    endif
  endif
 endfunction
-set <m-8>=8
+"set <m-8>=8
 map <M-8> <ESC>:call Create_inline()<CR>
 
 "
@@ -134,7 +134,7 @@ function! Create_source()
    endif
  endif
 endfunction
-set <m-7>=7
+"set <m-7>=7
 map <M-7> <ESC>:call Create_source()<CR>
 
 "
@@ -145,7 +145,7 @@ exec "cd " . _dir
 unlet _dir
 endfunction
 
-set <m-d>=d
+"set <m-d>=d
 map <M-d> <ESC>:call CHANGE_CURR_DIR()<CR>
 
 function! Iclang()

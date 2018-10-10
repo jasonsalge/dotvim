@@ -39,11 +39,11 @@ call plug#begin(s:plugin_dir)
 Plug 'airblade/vim-gitgutter'
 Plug 'tomasr/molokai'
 Plug 'joshdick/onedark.vim'
-"Plug 'junegunn/fzf', { 'do': './install --bin' }
-"Plug 'junegunn/fzf.vim'
-Plug 'wincent/command-t' " Need to compile after installing this
+Plug 'junegunn/fzf', { 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'
+"Plug 'wincent/command-t' " Need to compile after installing this
 Plug 'justinmk/vim-dirvish'
-Plug 'lyuts/vim-rtags'
+"Plug 'lyuts/vim-rtags'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sheerun/vim-polyglot'
 Plug 'tmux-plugins/vim-tmux-focus-events'
@@ -55,7 +55,10 @@ Plug 'bfrg/vim-cpp-modern'
 Plug 'jremmen/vim-ripgrep'
 
 " Manually managed
-Plug '~/.vim/bundle/YouCompleteMe', { 'for': [] }
+"Plug '~/.vim/bundle/YouCompleteMe', { 'for': [] }
+"
+if has('nvim')
+Plug 'Valloric/YouCompleteMe'
 augroup load_ycm
     autocmd!
     autocmd CursorHold,CursorHoldI * exe "normal! m\""
@@ -63,11 +66,14 @@ augroup load_ycm
                                  \ | set updatetime=250
                                  \ | autocmd! load_ycm
 augroup END
+endif
 
 Plug '~/.vim/bundle/redbeard-tools'
 
 call plug#end()
 
+"let g:ycm_global_ycm_extra_conf = '${HOME}/.vim/ycm_extra_conf.py'
+au FileType c,cpp nnoremap <buffer> <c-]> :YcmCompleter GoTo<CR>
 
 " --column: Show column number
 " --line-number: Show line number
@@ -256,7 +262,7 @@ set nostartofline                    " do not change the X position of the
                                      " cursor when paging up and down
 set mouse=a
 if $TERM == "screen-256color"
-    set ttymouse=xterm
+    "set ttymouse=xterm
     set mouse=a
 endif
 
@@ -358,20 +364,23 @@ nnoremap j gj
 nnoremap k gk
 " Configure fzf mappings
 "map <leader>s :Ag<space>
-"map <C-p> :Files<CR>
-"map <leader>l :Buffer<CR>
-"map <leader>t :GFiles<CR>
-"map <leader>h :Commands<CR>
-"map <leader>? :Helptags<CR>
-"map <leader>gs :GFiles?<CR>
-"map <leader>gl :Commits<CR>
-"map <leader>gbl :BCommits<CR>
+map <C-p> :Files<CR>
+map <leader>b :Buffer<CR>
+map <leader>t :GFiles<CR>
+map <leader>h :Commands<CR>
+map <leader>? :Helptags<CR>
+map <leader>gs :GFiles?<CR>
+map <leader>gl :Commits<CR>
+map <leader>gbl :BCommits<CR>
+map <leader>l :BLines<CR>
+map <leader>bl :BLines<CR>
 "imap <C-x><C-l> <plug>(fzf-complete-line)
 
 
 " Miscellaneous
 map <leader>w <C-w>
 map <leader>s :Rg<space>
+map <leader>f :Rg
 
 " Search and grep
 "-------------------------------------------------------------------------------
@@ -432,7 +441,10 @@ set completeopt=longest,menuone
 let g:rtagsUseLocationList = 0
 
 " Configure vim-gitgutter
-let g:gitgutter_sign_column_always = 1
+"let g:gitgutter_sign_column_always = 1
+if has('nvim')
+    set signcolumn=yes
+endif
 
 " Configure gitv
 let g:Gitv_TruncateCommitSubjects = 1
