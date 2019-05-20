@@ -485,7 +485,7 @@ augroup vimrc_autocmd
     au BufWritePre .vimrc,*.js,*.php :call StripTrailingWhitespace()
 
     " Set text width for C++ code to be able to easily format comments.
-    au FileType cpp setlocal textwidth=80
+    au FileType cpp setlocal textwidth=120
     au FileType cpp setlocal formatoptions=croqn
 
     " Add support for Doxygen comment leader.
