@@ -53,20 +53,21 @@ Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 Plug 'bfrg/vim-cpp-modern'
 Plug 'jremmen/vim-ripgrep'
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
 " Manually managed
 "Plug '~/.vim/bundle/YouCompleteMe', { 'for': [] }
 "
-if has('nvim')
-Plug 'Valloric/YouCompleteMe'
-augroup load_ycm
-    autocmd!
-    autocmd CursorHold,CursorHoldI * exe "normal! m\""
-                                 \ | call plug#load('YouCompleteMe')
-                                 \ | set updatetime=250
-                                 \ | autocmd! load_ycm
-augroup END
-endif
+"if has('nvim')
+"Plug 'Valloric/YouCompleteMe'
+"augroup load_ycm
+    "autocmd!
+    "autocmd CursorHold,CursorHoldI * exe "normal! m\""
+                                 "\ | call plug#load('YouCompleteMe')
+                                 "\ | set updatetime=250
+                                 "\ | autocmd! load_ycm
+"augroup END
+"endif
 
 Plug '~/.vim/bundle/redbeard-tools'
 
@@ -327,14 +328,19 @@ nmap <silent> <leader>r :CommandTFlush<CR>
 let g:CommandTTraverseSCM='pwd'
 
 " YouCompleteMe mappings
-nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
-nnoremap <leader>jd :YcmCompleter GoTo<CR>
-nnoremap <leader>yd :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>yf :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>yi :YcmCompleter GoToInclude<CR>
-nnoremap <leader>yr :YcmCompleter GoToReferences<CR>
-nnoremap <leader>ys :YcmCompleter GoToImplementations<CR>
-nnoremap <leader>yt :YcmCompleter GetType<CR>
+"nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
+"nnoremap <leader>jd :YcmCompleter GoTo<CR>
+"nnoremap <leader>yd :YcmCompleter GoToDeclaration<CR>
+"nnoremap <leader>yf :YcmCompleter GoToDefinition<CR>
+"nnoremap <leader>yi :YcmCompleter GoToInclude<CR>
+"nnoremap <leader>yr :YcmCompleter GoToReferences<CR>
+"nnoremap <leader>ys :YcmCompleter GoToImplementations<CR>
+"nnoremap <leader>yt :YcmCompleter GetType<CR>
+
+nnoremap <leader>jd :call CocActionAsync('jumpDefinition')<CR>
+nnoremap <leader>yd :call CocActionAsync('jumpDefinition')<CR>
+nnoremap <F3> :call CocActionAsync('jumpReferences')<CR>
+nnoremap K :call CocActionAsync('doHover')<CR>
 
 " Close the current buffer
 map <leader>bd :Bclose<CR>
@@ -342,7 +348,7 @@ map <leader>bd :Bclose<CR>
 nmap <silent> <C-q> :Bclose<CR>
 
 " Remap K to do nothing instead of searching the man pages.
-nnoremap K <nop>
+"nnoremap K <nop>
 
 " Remap Q to do nothing instead of entering ex mode.
 nnoremap Q <nop>
