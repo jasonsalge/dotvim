@@ -28,6 +28,8 @@
 let s:plugin_dir = '~/.vim/plugged'
 let s:plug_file = '~/.vim/autoload/plug.vim'
 
+let g:coc_disable_startup_warning = 1
+
 if empty(glob(s:plug_file))
     silent execute '!curl -fLo ' . s:plug_file . ' --create-dirs -k ' .
         \ 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -339,6 +341,9 @@ let g:CommandTTraverseSCM='pwd'
 
 nnoremap <leader>jd :call CocActionAsync('jumpDefinition')<CR>
 nnoremap <leader>yd :call CocActionAsync('jumpDefinition')<CR>
+nnoremap <leader>ji :call CocActionAsync('jumpImplementation')<CR>
+nnoremap <leader>yi :call CocActionAsync('jumpImplementation')<CR>
+nnoremap <leader>jc :call CocActionAsync('jumpDeclaration')<CR>
 nnoremap <F3> :call CocActionAsync('jumpReferences')<CR>
 nnoremap K :call CocActionAsync('doHover')<CR>
 
